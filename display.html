@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GHG Emissions - Display</title>
+	<!--<link href="C:/Users/default.LAPTOP-L6DOAC28/Desktop/Synopsys'20/app/css/style.css" rel="stylesheet" type="text/css">-->
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body onload="display()">
+	<!-- <script>
+		var first = 0;
+		var second = 0;
+		var third = 0;
+	</script> -->
+	<!-- <script type='text/javascript'>top.first = 0; top.second = 0; top.third = 0;</script> -->
+	<script type="text/javascript" src="C:/Users/default.LAPTOP-L6DOAC28/Desktop/Synopsys'20/app/js/functionsRev.js"></script>
+	<!-- Optional JavaScript; choose one of the two! -->
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+	<!-- Bootrstrap navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">GHG Emissions Calculator</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="calculator.html">Calculator</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="research.html">Research</a>
+            </li>
+        </ul>
+      <!-- <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+        </div>
+      </div>
+    </nav>
+
+	<div class="container p-3 my-3 mx-auto" id="overview">
+		<h1>Your GHG Emissions</h1>
+		<div class="container mx-auto">
+			<div class="row gy-2">
+				<div class="col">
+					Your Emissions Data <br>
+					<h2 id="indData">
+					</h2>
+					<p>Top Emission Categories:
+						<ol>
+							<li id="catTxt1"></li>
+							<li id="catTxt2"></li>
+							<li id="catTxt3"></li>
+						</ol>
+					</p>
+				</div>
+				<div class="col">
+					Your State's Average Data <br>
+					<h2 id="avgData"></h2>
+					<!-- Previously inside h2: 50622 CO2e/year/household -->
+					<h15 style="font-size:0.8vw">* Waste was not included in this calculation due to its variability</h15>
+				</div>
+			</div>
+			<div class="row gy-2">
+				<div class="col gy-2">
+					<!-- Image -->
+					<img width="300" id="indImg" class="img-thumbnail" alt="Carbon footprint icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Carbon_footprint_icon.png/256px-Carbon_footprint_icon.png">
+				</div>
+				<div class="col gy-2">
+					<!-- Image -->
+					<img width="300" class="img-thumbnail" alt="Carbon footprint icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Carbon_footprint_icon.png/256px-Carbon_footprint_icon.png">
+				</div>
+			</div>
+			<div class="row gy-2 p-3">
+				<span class="badge bg-dark"><h2>Solutions</h2></span>
+				* The lists of solutions are customized to your top three categories. See below for details.
+			</div>
+		</div>	
+	</div>
+		<div id="Test" value="test"/></div>
+
+	<div class="container" id="vehicleSol" style="display:none">
+		<div class="row gy-2">
+			<div class="col-md-auto">
+				<span class="badge bg-secondary"><h3>Vehicles</h3></span>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Seed: Maintain your vehicles (increases fuel efficiency by 0.04%) </li>
+				<li class="list-group-item">Shoot: Replace passenger vehicles with walking (0 g CO2) or biking (21 g/passenger/km CO2) </li>
+				<li class="list-group-item">
+					Sapling:<br>
+					Hybrid or differently-fueled vehicles, Electric vehicles (EVs), Fuel cell vehicles (FCVs), CNG cars, Flexible Fuel Vehicles (FFVs), Biodiesel 
+					<br><a href="https://www.epa.gov/greenvehicles/learn-about-green-vehicles#GHG">To learn more about the emissions associated with each fuel type</a></li>
+					<li class="list-group-item">
+						Tree:<br> 
+						Electric vehicles and hydrogen fuel cell vehicles greatly reduce emissions (0 harmful tailpipe emissions)
+					</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+
+		<div class="container" id="homeEnergySol" style="display:none">
+			<div class="row gy-2">
+				<div class="col-md-auto">
+					<span class="badge bg-secondary"><h3>Home Energy: Natural gas, electricity, fuel oil, and propane</h3></span>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						Seed:<br>
+						Based on your heating source (of the four categories):<br>
+						Raising temperature in summer saves 0.03% (total bill) per degree.<br>
+						Lowering temperature winter saves 0.06% (total bill) per degree.<br>
+						Elec: Enabling sleep on devices can save 107.1 kWh annually.
+					</li>
+					<li class="list-group-item">
+						Shoot:<br>
+						Replacing 43 watt incandescent light bulbs with 13 watt bulbs (in lamps) can reduce emissions by 33 kWh (assuming it is on 3 hrs. daily).<br>
+						Drying clothes by hand/hanging clothes to air-dry: saves 769 kWh/year
+					</li>
+					<li class="list-group-item">
+						Sapling:<br>
+						Replacing boilers/furnace with ENERGY STAR: 728 natural gas lbs/year and 1056.0 lbs/year in fuel oil.<br>
+						Switching single pane windows to low-e E.S windows: 25,210,000 BTUs
+					</li>
+					<li class="list-group-item">
+						Tree:<br>
+						Replacing the refrigerator with ENERGY STAR refrigerator saves 322 kwH/year.
+					</li>
+				</ul> 
+			</div>
+			</div>
+		</div>
+
+		<div class="container" id="wasteSol" style="display:none">
+			<div class="row gy-2">
+				<div class="col-md-auto">
+				<span class="badge bg-secondary"><h3>Waste</h3></span>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						Seed: <br>
+						Recycling paper reduces: 140.60 lbs CO2e/year/person <br>
+						Eating more at home rather than dining at a restaurant reduces 1.39 metric tonnes of CO2e a year (per person).
+					</li>
+					<li class="list-group-item">
+						Shoot: <br>
+						Recycling plastic reduces: 35.56 lbs CO2e/year/person<br>
+						Composting food waste can reduce up to 6 metric tons CO2 annually.
+					</li>
+					<li class="list-group-item">
+						Sapling: <br>
+						Recycling metal reduces: 89.38 lbs CO2e/year/person<br>
+						Recycling e-waste (electronic devices) can help the health of communities near landfills and climate change. (Ex: Apple's refurbishment program)
+					</li>
+					<li class="list-group-item">
+						Tree: <br>
+						Recycling glass reduces: 25.39 lbs CO2e/year/person<br>
+						Having a vegetarian diet can reduce emission of 142.5 kg CO2/kg products (See Assumptions in the "Research" section for which meat products were accounted for.) <br>
+						Vegan diet can reduce emissions of 166.5 kg CO2/kg products
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- List the top 3 emissions -->
+		<script>
+			function display () {
+			//window.alert("ABC")
+			//window.alert(first + " " + window.second + " " + window.third)
+			const queryString = window.location.search;
+
+			const urlParams = new URLSearchParams(queryString);
+			//window.alert("params " + urlParams.get("peeps"));
+
+			//window.alert(getTopThree());
+
+			/* Note: the original em data is in lbs, convert to Mg or kg */
+			/* Find state em per capita * num people in the user's household --> avg data for user's household size */
+			const IND_TOTAL = (urlParams.get("all")/2205).toFixed(2);
+			document.getElementById("indData").innerHTML = IND_TOTAL + " Mg CO2e/year";
+
+			const NAT_TOTAL = 50622;
+			// Convert all units to SI Unit (kg or Mg). 1 megagram (Mg) = 1000 kg, 1 Mg = 1 metric ton (t)
+			var STATE_TOTAL = urlParams.get("displayEm");
+			STATE_TOTAL = Number(STATE_TOTAL);
+			const STATE_TOTAL_REP = STATE_TOTAL.toFixed(2);
+			document.getElementById("avgData").innerHTML = STATE_TOTAL_REP + " (This is STATE_TOTAL) Mg CO2e/year/person";
+
+			var cat1 = urlParams.get("topCat1");
+			var cat2 = urlParams.get("topCat2");
+			var cat3 = urlParams.get("topCat3");
+			// window.alert("Cats: " + cat1 + " " + cat2 + " " + cat3);
+			document.getElementById("catTxt1").innerHTML = cat1 ;
+			document.getElementById("catTxt2").innerHTML = cat2;
+			document.getElementById("catTxt3").innerHTML = cat3;
+
+			var amt1 = urlParams.get("top1"); 
+			var amt2 = urlParams.get("top2");
+			var amt3 = urlParams.get("top3");
+			// window.alert("Amts: " + amt1 + " " + amt2 + " " + amt3);
+			
+			var size = (IND_TOTAL/STATE_TOTAL);
+			// window.alert("The percent was: " + size)
+			size = size * 300;
+			// size = 350;
+			if (size > 400) {
+				size = 400;
+			}
+			if (size < 200) {
+				size = 200;
+			}
+			var img = document.getElementById("indImg").style.width = size + "px";
+
+
+			solutions(cat1);
+			solutions(cat2);
+			solutions(cat3);
+
+
+
+			// var newDiv = document.createElement("div");
+			// newDiv.innerHTML = urlParams.get("top1") + " " + urlParams.get("top2") + " " + urlParams.get("top3");
+			// document.getElementById("overview").appendChild(newDiv);
+
+			// var newDiv2 = document.createElement("div");
+			// newDiv2.innerHTML = urlParams.get("topCat1") + " " + urlParams.get("topCat2") + " " + urlParams.get("topCat3");
+			// document.getElementById("overview").appendChild(newDiv2);
+		}
+
+		function solutions(category) {
+			var displayed = false;
+			if (category == "vehicle") {
+				vehicleSol.style.display = "block";
+			} else if (category == "natural gas" || category == "electricity" || category == "fuel oil" || category == "propane") {
+				if (!displayed) { // it hasn't been displayed yet
+					homeEnergySol.style.display = "block";
+				displayed = true;
+			}
+		} else {
+			wasteSol.style.display = "block";
+		}
+	}
+</script>
+
+</body>
+
+<!-- <ul class="list-group list-group-flush">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul> -->

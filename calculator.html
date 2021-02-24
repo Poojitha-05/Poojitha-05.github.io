@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>GHG Emissions - Calculator</title>
+        <!-- <link href="C:/Users/default.LAPTOP-L6DOAC28/Desktop/Synopsys'20/app/css/style.css" rel="stylesheet" type="text/css">-->
+        <!-- Bootstrap CSS --> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        
+    </head>
+
+    <body>
+        <script type="text/html" src="C:/Users/default.LAPTOP-L6DOAC28/Desktop/GHGCalculator/display.html"></script>
+        <script type="text/javascript" src="C:/Users/default.LAPTOP-L6DOAC28/Desktop/GHGCalculator/app/js/functionsRev.js"></script>
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS 
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>-->
+
+        <!-- Bootrstrap navbar -->
+        <!-- <nav class="nav nav-tabs flex-column flex-sm-row">
+          <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="index.html">Home</a>
+          <a class="flex-sm-fill text-sm-center nav-link active" href="calculator.html">Calculator</a>
+          <a class="flex-sm-fill text-sm-center nav-link" href="research.html">Research</a>
+        </nav> -->
+
+        <!-- Bootrstrap navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">GHG Emissions Calculator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="calculator.html">Calculator</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="research.html">Research</a>
+                </li>
+            </ul>
+          <!-- <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> -->
+            </div>
+          </div>
+        </nav>
+
+
+        <!-- Calculator form start -->
+        <div class="container">
+        <section id="#calculator" class="main-section home-background">
+            <h1>Calculator</h1>
+            <br>
+            <h2>Displays your carbon footprint and viable suggestions to reduce your emissions.</h2>
+            <p>Enter your usages for the following fields. Scroll to see more categories and receive your results! 
+            Your footprint, top three emission categories, and solutions will be displayed. To learn more about the
+            assumptions and formulas behind the scenes, see "Research."</p>
+
+            <!-- Search Bar -->
+            <p>Many fields will ask you about specific information such as vehicle fuel economy. Use the search bar below to find information you may need.</p>
+
+            <div class="search-bar">
+            	<div class="d-grid gap 2">
+            		<div class="p-2">
+	                <textarea id="query"></textarea>
+	                <br>
+	                <button class="btn btn-secondary" onclick="search()">Search</button>
+	                <script>
+	                    function search() {
+	                        var query = document.getElementById("query").value;
+	                        location.replace("https://www.google.com/search?q=" + query + "");
+	                    }
+	                </script>
+            		</div>
+            	</div>
+            </div>
+        </section>
+        
+
+
+        <div class="calc-form">
+            <form class="row g-2 was-validated">
+                <section id="#general">
+                    <span class="badge bg-primary"><h2>General Information</h2></span> <br> <br>
+                        <div>
+                            <input id="top1" name="top1" hidden>
+                        </div>
+                        <div>
+                            <input id="top2" name="top2" hidden>
+                        </div>
+                        <div>
+                            <input id="top3" name="top3" hidden>
+                        </div>
+                        <div>
+                            <input id="topCat1" name="topCat1" hidden>
+                        </div>
+                        <div>
+                            <input id="topCat2" name="topCat2" hidden>
+                        </div>
+                        <div>
+                            <input id="topCat3" name="topCat3" hidden>
+                        </div>
+                        <div>
+                            <input id="all" name="all" hidden>
+                        </div>
+                        <div>
+                            <input id="displayEm" name="displayEm" hidden>
+                        </div>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <div class="p-3 border bg-light">
+                                <input type="number" min="1" class="form-control" id="people" name="people" value=4 placeholder="Enter the number of people in your household" required>
+                                <!-- <label for="people">Enter the number of people in your hosehold</label> -->
+                                <div class="invalid-feedback">
+                                    Please enter a positive integer.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border bg-light">
+                                <input type="text" class="form-control" maxlength="2" id="state" name="staty" value="MD" placeholder="Enter state in format XX (e.g CA)" oninput="checkState()" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid state.
+                                </div>
+                                <script>
+                                    function checkState() {
+                                        var tmpState = document.getElementById("state").value;
+                                        // window.alert("phew")
+                                        tmpState = Number(eGrid(tmpState));
+                                        if (isNaN(tmpState)) {
+                                            window.alert("Please enter a valid state")
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+        <section id="#vehicle">
+            <span class="badge bg-primary"><h2>Vehicles</h2></span> <br><br>
+            <div class="row g-2" id="dynamicInput">
+                <div class="col-6">
+                    <div class="p-3 border bg-light">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="vehicleUnits">Miles units</label>
+                            <select class="form-select" id="vehicleUnits">
+                                <option selected value="weeks" name="unitWeeks">mi/weeks</option>
+                                <option value="years" name="unitYrs">mi/years </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">     
+                    <div class="p-3 border bg-light">                 
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" name="numVs" id="inputNumVehicles" value=1 min="0" placeholder="Number of vehicles" 
+                            aria-label="Example text with button addon" aria-describedby="button-addon1" required>
+                            <div class="invalid-feedback">
+                                Please input a positive integer or 0.
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="enter" name="enterVehicle" onclick="addVehicles()">Enter (required)</button>
+                        <!-- <button type="button" class="btn btn-primary" name="enterVehicle" id="enter" onclick="addVehicles()">Enter (required)</button> -->
+                        <!-- <script>
+                        	function hello() {
+                        		window.alert("hello!")
+                        	}
+                        </script>  -->
+                        <!-- Bakcup for if user doesn't click -->
+                    </div>
+                </div>
+                <div class="col"> 
+                    <!-- <div class="p-3 border bg-light">      -->
+                        <!-- <span class="badge bg-secondary"><h4>Your vehicle data</h4></span>        
+                        <input type="number" min="0" step=0.01 class="form-control" id="inputFuelEcon" name="fuelEcon"
+                            placeholder="Your vehicle's fuel economy in mpg (Use search bar if needed.)" required>
+                        <div class="invalid-feedback">
+                            Please input a positive number or 0.
+                        </div> -->
+                    <!-- </div> -->
+                </div>
+                <!-- <div class="col-6">
+                    <div class="p-3 border bg-light">
+                        <input type="number" min="0" step=0.01 class="form-control" id="inputMiles" name="miles" 
+                        placeholder="Number of miles (219 mi/week or 11398 mi/year is the nat. avg.)" 
+                        aria-label="Text input with chooser" required>
+                        <div class="invalid-feedback">
+                            Please input a positive number or 0.
+                        </div>
+                    </div>
+                </div>  -->
+            </div>
+        </section>
+
+        <section id="#natgas">
+            <span class="badge bg-primary"><h2>Natural Gas</h2></span>
+            <br><br>
+            <!--Selection: Therms, Cubic feet, $/cubic feet     Input: Number (non-negative) -->
+            <div class="row g-2">
+                <div class="col-6">
+                    <div class="p-3 border bg-light">
+                        <div class ="input-group mb-3">
+                            <label class="input-group-text" for="natGasUnits">Units</label>
+                            <select class="form-select" id="natGasUnits">
+                                <option selected value="therms" name="unTherms">therms</option>
+                                <option value="cubic ft" name="natgasFt">cubic ft</option>
+                                <option value="dollars" name="natgasBill">monthly bill in $</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light">
+                        <input type="number" min="0" step=0.01 class="form-control" id="inputNatGas" name="natGasAmt" value=2
+                        placeholder="Monthly amt./bill of natural gas" required>
+                        <div class="invalid-feedback">
+                            Please input a positive number or 0.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="#electricity">
+            <span class="badge bg-primary"><h2>Electricity</h2></span>
+            <br><br>
+            <!--Selection: kwH / $, GP%   Input: Number (non-negative) -->
+            <div class="row g-2">
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <div class ="input-group mb-3">
+                            <label class="input-group-text" for="elecUnits">Units</label>
+                            <select class="form-select" id="elecUnits">
+                                <option selected value="kwH" name="eleckwH">kwH</option>
+                                <option value="dollars" name="elecBill">monthly bill in $</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <input type="number" min="0" step=0.01 class="form-control" id="inputElec" name="elecAmt" value=3
+                        placeholder="Monthly amt./bill of electricity" required>
+                        <div class="invalid-feedback">
+                            Please input a positive number or 0.
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <!-- Green Power -->
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="yesGreen" name="greenpow" 
+                            onclick="greenPow()">
+                            <label class="form-check-label" for="inlineCheckbox1">If you purchase Green Power, check this box.</label>
+                        </div>
+                        <div id="text" style="display:none"> 
+                            <div class="input-group mb-3">
+                             <span class="input-group-text" id="basic-addon1">%</span>
+                             <input type="number" min="0" step=0.01 class="form-control" id="inputGreenPow" name="percentPow" value=4
+                             placeholder="What percent of your total electricity is Green Power?">
+                             <div class="invalid-feedback">
+                                Please input a positive number.
+                             </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <section id="#fueloil">
+        <span class="badge bg-primary"><h2>Fuel Oil</h2></span>
+        <br><br>
+        <!--Selection: gallons / $   Input: Number (non-negative) -->
+        <div class="row g-2">
+            <div class="col-6">
+                <div class="p-3 border bg-light">
+                    <div class ="input-group mb-3">
+                        <label class="input-group-text" for="fuelOilUnits">Units</label>
+                        <select class="form-select" id="fuelOilUnits">
+                            <option selected value="gallons" name="fuelGals">gallons</option>
+                            <option value="dollars" name="fuelBill">monthly bill in $</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="p-3 border bg-light">
+                    <input type="number" min="0" step=0.01 class="form-control" id="inputFuelOil" name="fuelAmt" value=5
+                    placeholder="Monthly amt./bill of fuel oil" required>
+                    
+                    <div class="invalid-feedback">
+                     Please input a positive number or 0.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="#propane">
+        <span class="badge bg-primary"><h2>Propane</h2></span>
+        <br><br>
+        <!--Selection: gallons / $   Input: Number (non-negative) -->
+        <div class="row g-2">
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    <div class ="input-group mb-3">
+                        <label class="input-group-text" for="propaneUnits">Units</label>
+                        <select class="form-select" id="propaneUnits">
+                            <option selected value="gallons" name="propGals">gallons</option>
+                            <option value="dollars" name="propBill">monthly bill in $</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    <input type="number" min="0" step=0.01 class="form-control" id="inputPropane" name="propAmt" value=6
+                    placeholder="Monthly amt./bill of propane" required>
+                    <div class="invalid-feedback">
+                        Please input a positive number or 0.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="#waste">
+        <span class="badge bg-primary"><h2>Waste</h2></span>
+        <br><br>
+        <div class="row g-2">
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    <!-- Checkbox mod 4 options -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="no" id="metalWaste" name="metal">
+                        <label class="form-check-label" for="metalWaste">
+                            Do you recycle metal (e.g aluminum and steel cans)?
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="no" id="plasticWaste" name="plastic">
+                        <label class="form-check-label" for="plasticWaste">
+                            Do you recycle plastic?
+                        </label>
+                    </div>                           
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="no" id="glassWaste" name="glass">
+                        <label class="form-check-label" for="glassWaste">
+                            Do you recycle glass?
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="no" id="paperWaste" name="paper">
+                        <label class="form-check-label" for="paperWaste">
+                            Do you recycle paper (magazines & newspapers)?
+                        </label>
+                    </div>  
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+
+    <section id="#finish">
+        <div class="p-3 border bg-light">
+            <div class="g-2 row">
+                <button type="submit" class="btn btn-success" onclick="calculate(); text();" method="GET" name="done" id="done" formaction="display.html">Calculate</button>
+                <!-- <button class="btn btn-primary" type="button" value="Submit" name="done" onclick="calculate()">Calculate</button> -->
+                 <!-- <input type="submit" id="submarine" name="subby" value="Send"> -->
+            </div>
+        </div>
+    </section>
+
+  </form>
+</div>
+</div>
+
+<script>
+function greenPow() {
+  // Get the checkbox
+  var checkBox = document.getElementById("inlineCheckbox1");
+  // Get the output text
+  var text = document.getElementById("text");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+        text.style.display = "none";
+  }
+      // window.alert(checkBox + " " + text);
+  }
+</script>
+<script>
+    function text() {
+        
+        var arr = getTopThree();
+        window.first = arr[0];
+        window.second = arr[1];
+        window.third = arr[2];
+
+    }
+    
+</script>
+
+
+</body>
+
+
+
+
+</html>
