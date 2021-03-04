@@ -186,7 +186,8 @@
 
 			/* Note: the original em data is in lbs, convert to Mg or kg */
 			/* Find state em per capita * num people in the user's household --> avg data for user's household size */
-			const IND_TOTAL = (urlParams.get("all")/2205).toFixed(2);
+			const IND_TOTAL = 6.44097;
+			// (urlParams.get("all")/2205).toFixed(2);
 			document.getElementById("indData").innerHTML = IND_TOTAL + " Mg CO2e/year";
 
 			const NAT_TOTAL = 50622;
@@ -220,6 +221,7 @@
 				size = 200;
 			}
 			var img = document.getElementById("indImg").style.width = size + "px";
+			window.alert(size)
 
 
 			solutions(cat1);

@@ -47,6 +47,8 @@ function electricity (state, un, monthlyAmt, greenPower) {
   var emissions = 0;
 
   // make a EGRID_DATA arr & get the const from start
+  // Changing for testing
+  // const EGRID_DATA = 1238.516/1000;
   const EGRID_DATA = eGrid(state);
   // window.alert("EGRID_DATA: " + EGRID_DATA);
   const pricePerKwH = 0.119;
@@ -217,14 +219,14 @@ function addVehicles () {
         window.alert("vehicleUn: " + vehicleUn + " vehicleEm: " + vehicleEm)
         
 
-        // for (var i = 0; i < numVehicles; i++) {
-        // 	// window.alert("inside")
-        //     var fuelEconomy = document.getElementById(("fuelEcon" + i)).value;
-        //     // window.alert("fuelEcon: " + fuelEconomy)
-        //     var mileage = document.getElementById(("mileage" + i)).value;
-        //     // Call the emissions function for each vehicle
-        //     vehicleEm += vehicle(vehicleUn, mileage, fuelEconomy);
-        // }
+        for (var i = 0; i < numVehicles; i++) {
+        	// window.alert("inside")
+            var fuelEconomy = document.getElementById(("fuelEcon" + i)).value;
+            // window.alert("fuelEcon: " + fuelEconomy)
+            var mileage = document.getElementById(("mileage" + i)).value;
+            // Call the emissions function for each vehicle
+            vehicleEm += vehicle(vehicleUn, mileage, fuelEconomy);
+        }
         window.alert("vehicleEm!" + vehicleEm)
         window.alert("Hello world!")
 
