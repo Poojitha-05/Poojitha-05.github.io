@@ -144,7 +144,7 @@ function waste (numPeople, metal, plastic, glass, paper) {
 
 
 function addVehicles () {
-  window.alert("inside addvehicles")
+  // window.alert("inside addvehicles")
   document.getElementById("enter").disabled = true;
   var display = document.getElementById("dynamicInput");
   var parent = document.createElement("div");
@@ -209,14 +209,14 @@ function addVehicles () {
     // document.getElementById("overview").innerHTML = (first + " " + second + " " + third);
     // document.write(first + " " + second + " " + third);
     function calculate() {
-        window.alert("Hello world!")
+        // window.alert("Hello world!")
         // Vehicles
         var vehicleUn = document.getElementById("vehicleUnits").value;
         
         var numVehicles = document.getElementById("inputNumVehicles").value;
 
 		    var vehicleEm = 0;
-        window.alert("vehicleUn: " + vehicleUn + " vehicleEm: " + vehicleEm)
+        // window.alert("vehicleUn: " + vehicleUn + " vehicleEm: " + vehicleEm)
         
 
         for (var i = 0; i < numVehicles; i++) {
@@ -227,8 +227,8 @@ function addVehicles () {
             // Call the emissions function for each vehicle
             vehicleEm += vehicle(vehicleUn, mileage, fuelEconomy);
         }
-        window.alert("vehicleEm!" + vehicleEm)
-        window.alert("Hello world!")
+        // window.alert("vehicleEm!" + vehicleEm)
+        // window.alert("Hello world!")
 
 
         // Electricity
@@ -249,8 +249,8 @@ function addVehicles () {
         // window.alert("state=" + theState + " elecUn=" + elecUn + " elecMonthlyAmt=" + elecMonthlyAmt + " greenPower=" + greenPower);
         var elecEm = electricity(theState, elecUn, elecMonthlyAmt, greenPower);
         var testEGRID = eGrid(theState);
-        window.alert("EGRID_DATA" + testEGRID)
-        window.alert("elecEm: " + elecEm)
+        // window.alert("EGRID_DATA" + testEGRID)
+        // window.alert("elecEm: " + elecEm)
 
        
        // Natural Gas
@@ -258,7 +258,7 @@ function addVehicles () {
         var natGasMonthlyAmt = document.getElementById("inputNatGas").value;
         // Call natGas
         var natGasEm = natGas(natGasUn, natGasMonthlyAmt);
-        window.alert("natGasEm! " + natGasEm)
+        // window.alert("natGasEm! " + natGasEm)
 
         
         // Fuel Oil
@@ -266,7 +266,7 @@ function addVehicles () {
         var fuelOilMonthlyAmt = document.getElementById("inputFuelOil").value;
         // Call fuelOil
         var fuelOilEm = fuelOil(fuelOilUn, fuelOilMonthlyAmt);
-        window.alert("fuelOilEm:  " + fuelOilEm)
+        // window.alert("fuelOilEm:  " + fuelOilEm)
 
        
         // Propane
@@ -276,7 +276,7 @@ function addVehicles () {
         // window.alert("propaneMonthlyAmt: " + propaneMonthlyAmt)
         // Call propane
         var propaneEm = propane(propaneUn, propaneMonthlyAmt);
-        window.alert("propaneEm: " + propaneEm)
+        // window.alert("propaneEm: " + propaneEm)
 
         // Waste
         var numPeople = document.getElementById("people").value;
@@ -286,7 +286,7 @@ function addVehicles () {
         var yesPaper = document.getElementById("paperWaste").checked;
         // Call waste
         var wasteEm = waste(numPeople, yesMetal, yesPlastic, yesGlass, yesPaper);
-        window.alert("wasteEm " + wasteEm)
+        // window.alert("wasteEm " + wasteEm)
         // window.alert(natGasUn + " " + natGasMonthlyAmt + " " + natGasEm);
         // window.alert("\n" + fuelOilUn + " " + fuelOilMonthlyAmt + " " + fuelOilEm);
         // window.alert("\n" + propaneUn + " " + propaneMonthlyAmt + " " + propaneEm);
@@ -295,7 +295,7 @@ function addVehicles () {
 
         // Total Emissions 
         var totalEm = [vehicleEm, natGasEm, elecEm, fuelOilEm, propaneEm, wasteEm];
-        window.alert("totalEm" + totalEm)
+        // window.alert("totalEm" + totalEm)
 
         totalEm.sort((a, b) => a - b); // ascending order so last 3 are the top 3
         
@@ -311,32 +311,32 @@ function addVehicles () {
           thirdCat = category(third, vehicleEm, natGasEm, elecEm, fuelOilEm, propaneEm, wasteEm);
 
          document.getElementById("top1").value = [first];
-         window.alert("Top1: " + document.getElementById("top1").value)
+         // window.alert("Top1: " + document.getElementById("top1").value)
 
          document.getElementById("top2").value = [second];
-         window.alert("Top2: " + document.getElementById("top2").value)
+         // window.alert("Top2: " + document.getElementById("top2").value)
 
          document.getElementById("top3").value = [third];
-         window.alert("Top3: " + document.getElementById("top3").value)
+         // window.alert("Top3: " + document.getElementById("top3").value)
 
          document.getElementById("topCat1").value = [firstCat];
-         window.alert(document.getElementById("topCat1").value)
+         // window.alert(document.getElementById("topCat1").value)
 
          document.getElementById("topCat2").value = [secondCat];
-         window.alert(document.getElementById("topCat2").value)
+         // window.alert(document.getElementById("topCat2").value)
 
          document.getElementById("topCat3").value = [thirdCat];
-         window.alert(document.getElementById("topCat3").value)
+         // window.alert(document.getElementById("topCat3").value)
         
          var total = vehicleEm + natGasEm + elecEm + fuelOilEm + propaneEm + wasteEm;;
          document.getElementById("all").value = total.toFixed(2);
-         window.alert("Total!! " + document.getElementById("all").value)
+         // window.alert("Total!! " + document.getElementById("all").value)
 
          /* Added var for state avg to display in display.html 
          instead of nat avg */
          totalStateEm = stateAvg(theState);
          document.getElementById("displayEm").value = [totalStateEm];
-         window.alert("state's avg: " + document.getElementById("displayEm").value)
+         // window.alert("state's avg: " + document.getElementById("displayEm").value)
 
         //window.alert(window.first + " " + window.second + " " + window.third);
         //window.alert(first + " " + second + " " + third);
@@ -346,7 +346,7 @@ function addVehicles () {
   
   function getTopThree () {
     // var topThree = [window.first, window.second, window.third];
-    window.alert(first + " - " + second + "- " + third);
+    // window.alert(first + " - " + second + "- " + third);
     var topThree = [first, second, third];
 
  
