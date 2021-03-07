@@ -65,7 +65,7 @@
             <h1>Calculator</h1>
             <br>
             <h2>Displays your carbon footprint and viable suggestions to reduce your emissions.</h2>
-            <p>Enter your usages for the following fields. Scroll to see more categories and receive your results! 
+            <p>Enter your usages for the following fields. <i>Average amounts for most fields are are provided as the default values.</i> Scroll to see more categories and receive your results! 
             Your footprint, top three emission categories, and solutions will be displayed. To learn more about the
             assumptions and formulas behind the scenes, see "Research."</p>
 
@@ -120,18 +120,19 @@
                             <input id="displayEm" name="displayEm" hidden>
                         </div>
                     <div class="row g-2">
-                        <div class="col-6">
-                            <div class="p-3 border bg-light">
-                                <input type="number" min="1" class="form-control" id="people" name="people" value=4 placeholder="Enter the number of people in your household" required>
-                                <!-- <label for="people">Enter the number of people in your hosehold</label> -->
-                                <div class="invalid-feedback">
-                                    Please enter a positive integer.
-                                </div>
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="number" min="1" class="form-control" id="people" name="people" required>
+                                <label for="people">Number of people in your household</label>
+                            <div class="invalid-feedback">
+                                Please enter a positive integer.
+                            </div>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="p-3 border bg-light">
-                                <input type="text" class="form-control" maxlength="2" id="state" name="staty" value="MD" placeholder="Enter state in format XX (e.g CA)" oninput="checkState()" required>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" maxlength="2" id="state" name="staty" oninput="checkState()" required>
+                                <label for="state">Enter state in format XX (e.g CA)</label>
                                 <div class="invalid-feedback">
                                     Please enter a valid state.
                                 </div>
@@ -167,15 +168,18 @@
                     </div>
                 </div>
                 <div class="col-6">     
-                    <div class="p-3 border bg-light">                 
-                        <div class="input-group mb-3">
-                            <input type="number" class="form-control" name="numVs" id="inputNumVehicles" value=1 min="0" placeholder="Number of vehicles" 
-                            aria-label="Example text with button addon" aria-describedby="button-addon1" required>
-                            <div class="invalid-feedback">
-                                Please input a positive integer or 0.
-                            </div>
+                    <div class="d-grid gap-3">
+                        <div class="form-floating mb-3">                 
+                                <input type="number" class="form-control" name="numVs" id="inputNumVehicles" min="0" 
+                                aria-label="Example text with button addon" aria-describedby="button-addon1" required>
+                                <label for="inputNumVehicles">Number of vehicles</label>
+                                <div class="invalid-feedback">
+                                    Please input a positive integer or 0.
+                                </div>
                         </div>
-                        <button type="button" class="btn btn-primary" id="enter" name="enterVehicle" onclick="addVehicles()">Enter (required)</button>
+                        <div>
+                                <button type="button" class="btn btn-primary" id="enter" name="enterVehicle" onclick="addVehicles()">Enter (required)</button>
+                        </div>
                         <!-- <button type="button" class="btn btn-primary" name="enterVehicle" id="enter" onclick="addVehicles()">Enter (required)</button> -->
                         <!-- <script>
                         	function hello() {
@@ -218,17 +222,17 @@
                         <div class ="input-group mb-3">
                             <label class="input-group-text" for="natGasUnits">Units</label>
                             <select class="form-select" id="natGasUnits">
-                                <option selected value="therms" name="unTherms">therms</option>
-                                <option value="cubic ft" name="natgasFt">cubic ft</option>
+                                <option value="therms" name="unTherms">therms</option>
+                                <option selected value="cubic ft" name="natgasFt">cubic ft</option>
                                 <option value="dollars" name="natgasBill">monthly bill in $</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="p-3 border bg-light">
-                        <input type="number" min="0" step=0.01 class="form-control" id="inputNatGas" name="natGasAmt" value=2
-                        placeholder="Monthly amt./bill of natural gas" required>
+                    <div class="form-floating mb-3">
+                        <input type="number" min="0" step=0.01 class="form-control" id="inputNatGas" name="natGasAmt" value="5500" required>
+                        <label for="inputNatGas">Monthly natural gas</label>
                         <div class="invalid-feedback">
                             Please input a positive number or 0.
                         </div>
@@ -254,9 +258,9 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="p-3 border bg-light">
-                        <input type="number" min="0" step=0.01 class="form-control" id="inputElec" name="elecAmt" value=3
-                        placeholder="Monthly amt./bill of electricity" required>
+                    <div class="form-floating mb-3">
+                        <input type="number" min="0" step=0.01 class="form-control" id="inputElec" name="elecAmt" value="943" required>
+                        <label for="inputElec">Monthly electricity</label>
                         <div class="invalid-feedback">
                             Please input a positive number or 0.
                         </div>
@@ -273,7 +277,7 @@
                         <div id="text" style="display:none"> 
                             <div class="input-group mb-3">
                              <span class="input-group-text" id="basic-addon1">%</span>
-                             <input type="number" min="0" step=0.01 class="form-control" id="inputGreenPow" name="percentPow" value=4
+                             <input type="number" min="0" step=0.01 class="form-control" id="inputGreenPow" name="percentPow" value=0
                              placeholder="What percent of your total electricity is Green Power?">
                              <div class="invalid-feedback">
                                 Please input a positive number.
@@ -303,9 +307,9 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="p-3 border bg-light">
-                    <input type="number" min="0" step=0.01 class="form-control" id="inputFuelOil" name="fuelAmt" value=5
-                    placeholder="Monthly amt./bill of fuel oil" required>
+                <div class="form-floating mb-3">
+                    <input type="number" min="0" step=0.01 class="form-control" id="inputFuelOil" name="fuelAmt" value="46" required>
+                    <label for="inputFuelOil">Monthly fuel oil</label>
                     
                     <div class="invalid-feedback">
                      Please input a positive number or 0.
@@ -333,9 +337,9 @@
                 </div>
             </div>
             <div class="col">
-                <div class="p-3 border bg-light">
-                    <input type="number" min="0" step=0.01 class="form-control" id="inputPropane" name="propAmt" value=6
-                    placeholder="Monthly amt./bill of propane" required>
+                <div class="form-floating mb-3">
+                    <input type="number" min="0" step=0.01 class="form-control" id="inputPropane" name="propAmt" value="39" required>
+                    <label for="inputPropane">Monthly propane</label>
                     <div class="invalid-feedback">
                         Please input a positive number or 0.
                     </div>

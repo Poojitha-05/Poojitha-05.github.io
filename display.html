@@ -69,7 +69,7 @@
 					Your State's Average Data <br>
 					<h2 id="avgData"></h2>
 					<!-- Previously inside h2: 50622 CO2e/year/household -->
-					<h15 style="font-size:0.8vw">* Waste was not included in this calculation due to its variability</h15>
+					<!-- <h15 style="font-size:0.8vw">* Waste was not included in this calculation due to its variability</h15> -->
 				</div>
 			</div>
 			<div class="row gy-2">
@@ -194,7 +194,7 @@
 			var STATE_TOTAL = urlParams.get("displayEm");
 			STATE_TOTAL = Number(STATE_TOTAL);
 			const STATE_TOTAL_REP = STATE_TOTAL.toFixed(2);
-			document.getElementById("avgData").innerHTML = STATE_TOTAL_REP + " (This is STATE_TOTAL) Mg CO2e/year/person";
+			document.getElementById("avgData").innerHTML = STATE_TOTAL_REP + " Mg CO2e/year/person";
 
 			var cat1 = urlParams.get("topCat1");
 			var cat2 = urlParams.get("topCat2");
